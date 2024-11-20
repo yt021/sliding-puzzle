@@ -5,3 +5,8 @@ body{
     background-color: #011f3f;
     color:#fef2bf;
 }
+.Container{
+    display: grid;
+    grid-template-columns: repeat(8,50px);
+    grid-template-rows: repeat(8,50px);
+}
