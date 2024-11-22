@@ -1,12 +1,98 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-family: "Press Start 2P", cursive;
-    background-color: #011f3f;
-    color:#fef2bf;
+:root{
+    --size: 18vh;
 }
-.Container{
-    display: grid;
-    grid-template-columns: repeat(8,50px);
-    grid-template-rows: repeat(8,50px);
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", cursive;
+  background-color: #011f3f;
+  color: #fef2bf;
+  justify-items: center;
+}
+p,
+h1 {
+  margin: 0;
+}
+.header {
+  margin: 2rem 0;
+  font-size: 0.8rem;
+}
+
+.container {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(4, calc(var(--size) + 5px));
+  grid-template-rows: repeat(4, calc(var(--size) + 5px));
+  width: calc(4*var(--size) + 3*5px);
+  height: calc(4*var(--size) + 3*5px);
+  padding: 5px;
+  background-color: gray;
+  border: 5px solid black;
+  
+}
+.item {
+  justify-items: center;
+  align-content: center;
+  width: calc(var(--size));
+  height: calc(var(--size));
+  background-color: #043c79;
+}
+.o1 {
+}
+.empty {
+  background-color: transparent;
+  /* border: none; */
+}
+.move-left {
+  position: relative;
+  animation-name: left;
+  animation-duration: 0.2s;
+}
+@keyframes left {
+  0% {
+    left: 0vh;
+  }
+  100% {
+    left: calc(var(--size) + 5px);
+  }
+}
+.move-right {
+  position: relative;
+  animation-name: right;
+  animation-duration: 0.2s;
+}
+@keyframes right {
+  0% {
+    right: 0vh;
+  }
+  100% {
+    right: calc(var(--size) + 5px);
+  }
+}
+.move-up {
+  position: relative;
+  animation-name: up;
+  animation-duration: 0.2s;
+}
+@keyframes up {
+  0% {
+    bottom: 0vh;
+  }
+  100% {
+    bottom: calc(var(--size) + 5px);
+  }
+}
+.move-down {
+  position: relative;
+  animation-name: down;
+  animation-duration: 0.2s;
+}
+@keyframes down {
+  0% {
+    top: 0vh;
+  }
+  100% {
+    top: calc(var(--size) + 5px);
+  }
 }
