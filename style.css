@@ -1,5 +1,5 @@
 :root {
-  --size: 6.6rem;
+  --size: 6rem;
 }
 body {
   font-size: calc(var(--size) / 3);
@@ -10,6 +10,7 @@ body {
   background-color: #14013f;
   color: #fef2bf;
   justify-items: center;
+  text-shadow: 5px 5px black;
 }
 #blocker {
   position: fixed;
@@ -25,18 +26,33 @@ body {
 }
 
 p {
-  /* display: block; */
   margin: 0;
 }
 .header {
   display: flex;
+  flex-direction: column;
   margin: 1rem 0;
   height: 8rem;
   align-items: center;
   justify-content: center;
 }
-#title {
+.timer {
   font-size: 3rem;
+  margin: 0;
+}
+.yes{
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 5px;
+}
+.yes2{
+  margin-top: 0px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.small-timer{
+  font-size: 2rem;
+  margin-bottom: 5px;
 }
 
 .container {
@@ -45,20 +61,17 @@ p {
   height: calc(4 * var(--size) + 3 * 5px);
   padding: 5px;
   background-color: #fef2bf;
-  /* border: 5px solid black; */
 }
 .footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  /* height: 7rem; */
   width: 100%;
 }
 .logobox {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 7rem; */
 }
 .logo {
   border: 5px solid black;
@@ -74,6 +87,7 @@ p {
   width: calc(var(--size));
   height: calc(var(--size));
   background-color: #361264;
+  text-shadow: 5px 5px black;
 }
 
 #i16 {
@@ -103,10 +117,20 @@ p {
 .item:hover {
   background-color: #6f48a0;
 }
-/* .btn:active::after{
-    background-color: #361264;
-} */
 
+.timer-flashing{
+  color: #9e9777;
+  /* text-shadow: none; */
+}
+.win-flashing1{
+  color: #9e9777;
+}
+.win-flashing2{
+  color: #fef2bf;
+}
+.win-flashing3{
+  color: #f5f2e2;
+}
 @media only screen and (max-width: 480px) {
   :root {
     --size: calc((100vw - 10 * 5px) / 4);
@@ -194,56 +218,3 @@ p {
   left: calc(3 * var(--size) + 4 * 5px);
   transition: top 0.2s, left 0.2s;
 }
-
-/* .move-left {
-  position: relative;
-  animation-name: left;
-  animation-duration: 0.2s;
-}
-@keyframes left {
-  0% {
-    left: 0vh;
-  }
-  100% {
-    left: calc(var(--size) + 5px);
-  }
-}
-.move-right {
-  position: relative;
-  animation-name: right;
-  animation-duration: 0.2s;
-}
-@keyframes right {
-  0% {
-    right: 0vh;
-  }
-  100% {
-    right: calc(var(--size) + 5px);
-  }
-}
-.move-up {
-  position: relative;
-  animation-name: up;
-  animation-duration: 0.2s;
-}
-@keyframes up {
-  0% {
-    bottom: 0vh;
-  }
-  100% {
-    bottom: calc(var(--size) + 5px);
-  }
-}
-.move-down {
-  position: relative;
-  animation-name: down;
-  animation-duration: 0.2s;
-}
-@keyframes down {
-  0% {
-    top: 0vh;
-  }
-  100% {
-    top: calc(var(--size) + 5px);
-  }
-} */
