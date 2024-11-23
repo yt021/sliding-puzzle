@@ -37,6 +37,7 @@ function startOver() {
   stopFlashing("#timer");
   $("#timer").text("00:00");
   $(".btn").text("Start");
+  $(".item").removeClass("movable");
   for (var i = 1; i <= 16; i++) {
     $(`#i${i}`).attr("class", `item p${i}`);
   }
@@ -115,7 +116,8 @@ function makeMovable() {
   movables.forEach(function (moveClass) {
     $(`.${moveClass}`)
       .addClass("movable")
-      .click(function () {
+      .off("click")
+      .on("click", function () {
         move(this, moveClass);
       });
   });
