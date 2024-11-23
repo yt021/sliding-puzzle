@@ -2,9 +2,11 @@ var numberSequence = [];
 var started = false;
 var minutes = 0;
 var seconds = 0;
-var interval;
+var timerInterval;
+var flashInterval;
 
 $(".btn").click(function () {
+  playRandomSound();
   $("#blocker").toggleClass("disabled");
   $(".btn").text("Reset");
   if (!started) {
@@ -29,9 +31,9 @@ function startOver() {
   minutes = 0;
   seconds = 0;
   $(".yes").addClass("disabled");
-    $(".yes2").addClass("disabled");
-    $(".timer").removeClass("small-timer");
-    stopWinFlashing(".yes");
+  $(".yes2").addClass("disabled");
+  $(".timer").removeClass("small-timer");
+  stopWinFlashing(".yes");
   stopFlashing("#timer");
   $("#timer").text("00:00");
   $(".btn").text("Start");
@@ -95,6 +97,7 @@ function move(tile1, tile2Class) {
   let tile1Class = findClassName(16);
   $(tile1).attr("class", `item ${tile1Class}`);
   $(`#i16`).attr("class", `item ${tile2Class}`);
+  playRandomSound();
   makeMovable();
   if (checkSequence()) {
     stopTimer();
@@ -102,6 +105,7 @@ function move(tile1, tile2Class) {
     $(".yes2").removeClass("disabled");
     $(".timer").addClass("small-timer");
     winFlashing(".yes");
+    playWinSounds();
   }
 }
 
@@ -147,12 +151,12 @@ function stopFlashing(selector) {
 }
 
 function winFlashing(selector) {
-  let states = ['win-flashing1', 'win-flashing2', 'win-flashing3'];
+  let states = ["win-flashing1", "win-flashing2", "win-flashing3"];
   let currentState = 0;
   flashInterval = setInterval(function () {
-      $(selector).removeClass(states.join(' ')); 
-      $(selector).addClass(states[currentState]); 
-      currentState = (currentState + 1) % states.length; 
+    $(selector).removeClass(states.join(" "));
+    $(selector).addClass(states[currentState]);
+    currentState = (currentState + 1) % states.length;
   }, 333);
 }
 
@@ -160,4 +164,23 @@ function stopWinFlashing(selector) {
   clearInterval(flashInterval);
   $(selector).removeClass("win-flashing1");
   $(selector).removeClass("win-flashing2");
+}
+
+function playRandomSound() {
+  let soundIndex = Math.floor(Math.random() * 9) + 1;
+  let audio = new Audio(`Assets/sounds/tiles/t${soundIndex}.wav`);
+  audio.volume=0.5;
+  audio.play();
+}
+
+function playWinSounds() {
+  let audio1 = new Audio(`Assets/sounds/win/w1.mp3`);
+  let audio2 = new Audio(`Assets/sounds/win/w2.mp3`);
+  let audio3 = new Audio(`Assets/sounds/win/w3.mp3`);
+  audio2.volume=0.4;
+  audio1.play();
+  audio2.play();
+  audio1.onended = function () {
+    audio3.play();
+  };
 }
