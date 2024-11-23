@@ -3,40 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sliding Puzzle</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Press+Start+2P"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="Assets/logo yt.svg" type="image/x-icon" />
+    <title>Sliding Puzzle</title>
   </head>
 
   <body>
-    <!-- <div id="blocker"></div> -->
+    <div id="blocker"></div>
     <div class="header">
-      <h1 id="title">Click On The Screen to Start</h1>
+      <h1 id="timer">00:00</h1>
     </div>
     <div class="container">
-      <div id="i1" class="item"><p>1</p></div>
-      <div id="i2" class="item"><p>2</p></div>
-      <div id="i3" class="item"><p>3</p></div>
-      <div id="i4" class="item"><p>4</p></div>
-      <div id="i5" class="item"><p>5</p></div>
-      <div id="i6" class="item"><p>6</p></div>
-      <div id="i7" class="item"><p>7</p></div>
-      <div id="i8" class="item"><p>8</p></div>
-      <div id="i9" class="item"><p>9</p></div>
-      <div id="i10" class="item"><p>10</p></div>
-      <div id="i11" class="item"><p>11</p></div>
-      <div id="i12" class="item"><p>12</p></div>
-      <div id="i13" class="item"><p>13</p></div>
-      <div id="i14" class="item"><p>14</p></div>
-      <div id="i15" class="item"><p>15</p></div>
-      <div id="i16" class="item empty"></div>
-    
+      <div id="i1" class="item p1"><p>1</p></div>
+      <div id="i2" class="item p2"><p>2</p></div>
+      <div id="i3" class="item p3"><p>3</p></div>
+      <div id="i4" class="item p4"><p>4</p></div>
+      <div id="i5" class="item p5"><p>5</p></div>
+      <div id="i6" class="item p6"><p>6</p></div>
+      <div id="i7" class="item p7"><p>7</p></div>
+      <div id="i8" class="item p8"><p>8</p></div>
+      <div id="i9" class="item p9"><p>9</p></div>
+      <div id="i10" class="item p10"><p>10</p></div>
+      <div id="i11" class="item p11"><p>11</p></div>
+      <div id="i12" class="item p12"><p>12</p></div>
+      <div id="i13" class="item p13"><p>13</p></div>
+      <div id="i14" class="item p14"><p>14</p></div>
+      <div id="i15" class="item p15"><p>15</p></div>
+      <div id="i16" class="item p16"></div>
     </div>
-
-    <div class="footer"></div>
+    <div class="reset"><button class="btn">Start</button></div>
+    <div class="footer">
+      <div class="logobox">
+        <img class="logo" src="Assets/logo yt.svg" alt="logo" />
+      </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="index.js"></script>
