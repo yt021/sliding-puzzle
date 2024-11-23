@@ -169,7 +169,7 @@ function stopWinFlashing(selector) {
 function playRandomSound() {
   let soundIndex = Math.floor(Math.random() * 9) + 1;
   let audio = new Audio(`Assets/sounds/tiles/t${soundIndex}.wav`);
-  audio.volume=0.5;
+  audio.volume = 0.5;
   audio.play();
 }
 
@@ -177,7 +177,7 @@ function playWinSounds() {
   let audio1 = new Audio(`Assets/sounds/win/w1.mp3`);
   let audio2 = new Audio(`Assets/sounds/win/w2.mp3`);
   let audio3 = new Audio(`Assets/sounds/win/w3.mp3`);
-  audio2.volume=0.4;
+  audio2.volume = 0.4;
   audio1.play();
   audio2.play();
   audio1.onended = function () {
