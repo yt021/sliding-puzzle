@@ -239,7 +239,7 @@ export function solveBoard(board: number[], gridSize: number = DEFAULT_GRID_SIZE
     return min;
   };
 
-  let result = startH;
+  let result = bound;
   while (true) {
     result = search(startEmpty, 0, 0);
     if (result === FOUND) return [...path];
