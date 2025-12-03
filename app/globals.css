@@ -1,0 +1,372 @@
+:root {
+  --grid-size: 4;
+  --gap: 5px;
+  --stack-gap: 0.85rem;
+  --page-max-width: 520px;
+  --move-duration: 160ms;
+  --move-ease: ease-out;
+  --header-height: 8.5rem;
+  --chrome-reserve: calc(var(--header-height) + 7rem);
+  --board-size: min(clamp(320px, calc(100vw - 3rem), 560px), calc(100dvh - var(--chrome-reserve)));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-press-start), "Press Start 2P", cursive;
+  background-color: #14013f;
+  color: #fef2bf;
+  text-shadow: 5px 5px black;
+  min-height: 100dvh;
+}
+
+.page {
+  --size: calc((var(--board-size) - (var(--grid-size) + 1) * var(--gap)) / var(--grid-size));
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0.95rem 1rem;
+  gap: var(--stack-gap);
+  width: min(100%, var(--page-max-width));
+  margin: 0 auto;
+}
+
+.topbar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: var(--header-height);
+  margin: 0;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer {
+  font-size: 2.4rem;
+  margin: 0.1rem 0;
+  line-height: 1.05;
+}
+
+.small-timer {
+  font-size: 1.7rem;
+}
+
+.yes {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.yes2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.board {
+  position: relative;
+  width: var(--board-size);
+  height: var(--board-size);
+  padding: var(--gap);
+  background-color: #fef2bf;
+  border: 5px solid #fef2bf;
+  overflow: hidden;
+}
+
+.tile {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  background-color: #361264;
+  text-shadow: 5px 5px black;
+  box-shadow: 0 0 0 5px #fef2bf;
+  top: 0;
+  left: 0;
+  transition: transform var(--move-duration) var(--move-ease);
+  user-select: none;
+  transform: translate3d(var(--tile-x), var(--tile-y), 0);
+  transform-origin: top left;
+  will-change: auto;
+}
+
+.tile:focus-visible {
+  outline: 3px solid #fef2bf;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px #361264;
+}
+
+.tile span {
+  font-size: calc(var(--size) / 3);
+}
+
+.tile.movable {
+  cursor: pointer;
+}
+
+.tile.movable:hover {
+  background-color: #6f48a0;
+}
+
+.tile.movable:active {
+}
+
+.tile.empty {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0.25rem 0 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.controls-settings {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  height: 4rem;
+  width: var(--board-size);
+  max-width: 100%;
+  font-family: var(--font-press-start), "Press Start 2P", cursive;
+  font-size: 2rem;
+  border: 4px solid #fef2bf;
+  color: #fef2bf;
+  background-color: #361264;
+  box-shadow: none;
+  text-shadow: 5px 5px black;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #6f48a0;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #fef2bf;
+  outline-offset: 3px;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  background-color: #361264;
+}
+
+.timer-flashing {
+  color: #9e9777;
+}
+
+.win-flashing1 {
+  color: #9e9777;
+}
+
+.win-flashing2 {
+  color: #fef2bf;
+}
+
+.win-flashing3 {
+  color: #f5f2e2;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logobox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  border: 5px solid black;
+  padding: 5px;
+  height: 1.6rem;
+  background-color: #fef2bf;
+  margin: 0.45rem 0;
+  user-select: none;
+}
+
+.settings {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.settings-panel {
+  width: 100%;
+  max-width: var(--board-size);
+  padding: 0.9rem 0;
+  text-align: left;
+}
+
+.settings-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.settings-row:last-child {
+  margin-bottom: 0;
+}
+
+.settings-label {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+
+.pill-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  border: 3px solid #fef2bf;
+  background-color: #14013f;
+  color: #fef2bf;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-press-start), "Press Start 2P", cursive;
+  font-size: 0.74rem;
+  cursor: pointer;
+  text-shadow: 3px 3px black;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.pill.active {
+  background-color: #6f48a0;
+}
+
+.pill:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.slider-wrap,
+.slider-value {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --board-size: min(clamp(280px, calc(100vw - 1.75rem), 440px), calc(100dvh - var(--chrome-reserve)));
+    --stack-gap: 0.85rem;
+  }
+
+  .page {
+    padding: 1.2rem 0.9rem 2rem;
+    gap: 0.95rem;
+  }
+
+  .timer {
+    font-size: 2.1rem;
+  }
+
+  .yes {
+    font-size: 2rem;
+  }
+
+  .yes2 {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    width: var(--board-size);
+    max-width: 100%;
+    height: 3.5rem;
+    font-size: 2rem;
+  }
+
+  .icon-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (max-height: 750px) {
+  :root {
+    --stack-gap: 0.65rem;
+    --chrome-reserve: 10.5rem;
+  }
+
+  .page {
+    padding: 0.95rem 0.8rem 1.6rem;
+  }
+
+  .header {
+    margin-top: 0.1rem;
+  }
+
+  .timer {
+    font-size: 1.95rem;
+  }
+
+  .small-timer {
+    font-size: 1.5rem;
+  }
+
+  .yes {
+    font-size: 1.75rem;
+  }
+
+  .yes2 {
+    font-size: 1.15rem;
+  }
+
+  .controls {
+    gap: 0.6rem;
+  }
+
+  .btn {
+    height: 3.5rem;
+    font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .btn {
+    transition: none;
+  }
+  .timer-flashing,
+  .win-flashing1,
+  .win-flashing2,
+  .win-flashing3 {
+    color: inherit;
+  }
+}

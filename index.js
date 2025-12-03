@@ -3,7 +3,8 @@ var started = false;
 var minutes = 0;
 var seconds = 0;
 var timerInterval;
-var flashInterval;
+var timerFlashInterval;
+var winFlashInterval;
 
 $(".btn").click(function () {
   playRandomSound();
@@ -102,6 +103,7 @@ function move(tile1, tile2Class) {
   makeMovable();
   if (checkSequence()) {
     stopTimer();
+    stopFlashing("#timer");
     $(".yes").removeClass("disabled");
     $(".yes2").removeClass("disabled");
     $(".timer").addClass("small-timer");
@@ -142,20 +144,22 @@ function checkSequence() {
 }
 
 function timerFlashing(selector) {
-  flashInterval = setInterval(function () {
+  clearInterval(timerFlashInterval);
+  timerFlashInterval = setInterval(function () {
     $(selector).toggleClass("timer-flashing");
   }, 1000);
 }
 
 function stopFlashing(selector) {
-  clearInterval(flashInterval);
+  clearInterval(timerFlashInterval);
   $(selector).removeClass("timer-flashing");
 }
 
 function winFlashing(selector) {
   let states = ["win-flashing1", "win-flashing2", "win-flashing3"];
   let currentState = 0;
-  flashInterval = setInterval(function () {
+  clearInterval(winFlashInterval);
+  winFlashInterval = setInterval(function () {
     $(selector).removeClass(states.join(" "));
     $(selector).addClass(states[currentState]);
     currentState = (currentState + 1) % states.length;
@@ -163,9 +167,10 @@ function winFlashing(selector) {
 }
 
 function stopWinFlashing(selector) {
-  clearInterval(flashInterval);
+  clearInterval(winFlashInterval);
   $(selector).removeClass("win-flashing1");
   $(selector).removeClass("win-flashing2");
+  $(selector).removeClass("win-flashing3");
 }
 
 function playRandomSound() {
